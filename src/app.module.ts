@@ -11,6 +11,7 @@ import { SequelizeConfig } from './config/sequelize.config';
 import { HttpExceptionFilter } from './lib/filters/http-exception.filter';
 import { ModelNotFoundExceptionFilter } from './lib/filters/model-not-found-exception.filter';
 import { UnhandledErrorExceptionFilter } from './lib/filters/unhandled-error-exception.filter';
+import { ValidationErrorExceptionFilter } from './lib/filters/validation-error-exception.filter';
 import { LoggerModule } from './lib/logger';
 
 @Module({
@@ -44,6 +45,10 @@ import { LoggerModule } from './lib/logger';
     {
       provide: APP_FILTER,
       useClass: ModelNotFoundExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: ValidationErrorExceptionFilter,
     },
   ],
 })
