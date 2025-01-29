@@ -18,14 +18,33 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migration:generate": "npx sequelize-cli migration:generate --name ",
+    "seed:generate": "npx sequelize-cli seed:generate --name",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
+    "db:migrate:refresh": "npx db:migrate:undo:all && npx db:migrate",
+    "db:seed": "npx sequelize-cli db:seed --seed",
+    "db:seed:undo": "npx sequelize-cli db:seed:undo --seed",
+    "db:seed:all": "npx sequelize-cli db:seed:all"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/sequelize": "^11.0.0",
+    "@nestjs/swagger": "^11.0.3",
+    "helmet": "^8.0.0",
+    "nestjs-seeder": "^0.3.2",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2",
+    "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.6.0",
@@ -39,6 +58,7 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.7",
+    "@types/sequelize": "^4.28.20",
     "@types/supertest": "^6.0.2",
     "commitlint": "^19.6.1",
     "eslint": "^9.18.0",
