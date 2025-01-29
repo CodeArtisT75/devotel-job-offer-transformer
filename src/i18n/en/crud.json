@@ -1,0 +1,8 @@
+{
+  "create": "Created successfully",
+  "read": "Fetched successfully",
+  "update": "Updated successfully",
+  "delete": "Deleted successfully",
+  "done": "Done successfully",
+  "not_found": "Entity Not found"
+}

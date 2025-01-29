@@ -1,0 +1,10 @@
+{
+  "basics": {
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "bad_request": "Bad request",
+    "validation": "Validation error",
+    "not_found": "Not found",
+    "internal": "Internal server error"
+  }
+}

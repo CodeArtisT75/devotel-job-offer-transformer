@@ -37,6 +37,7 @@
     "@nestjs/sequelize": "^11.0.0",
     "@nestjs/swagger": "^11.0.3",
     "helmet": "^8.0.0",
+    "nestjs-i18n": "^10.5.0",
     "nestjs-seeder": "^0.3.2",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
@@ -44,7 +45,8 @@
     "rxjs": "^7.8.1",
     "sequelize": "^6.37.5",
     "sequelize-cli": "^6.6.2",
-    "sequelize-typescript": "^2.1.6"
+    "sequelize-typescript": "^2.1.6",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.6.0",
