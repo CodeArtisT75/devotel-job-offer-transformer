@@ -1,8 +1,8 @@
 import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
 import { instanceToPlain, plainToInstance } from 'class-transformer';
 import { ValidationError, validate } from 'class-validator';
+import { BaseValidationDto } from '../base/base-validation-dto';
 import { ValidationErrorException } from '../exceptions/validation-error.exception';
-import { BaseValidationDto } from '../validators/base-validation-dto';
 
 /**
  * Validate user inputs with class-validator and class-transformer
