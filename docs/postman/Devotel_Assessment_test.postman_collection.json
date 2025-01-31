@@ -1,0 +1,649 @@
+{
+  "info": {
+    "_postman_id": "539eef11-6ba1-4721-b7f0-2701800ce741",
+    "name": "Devotel Assessment test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3998703"
+  },
+  "item": [
+    {
+      "name": "Job Offers",
+      "item": [
+        {
+          "name": "Paginate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/job-offers",
+              "host": ["{{host}}"],
+              "path": ["api", "job-offers"]
+            }
+          },
+          "response": [
+            {
+              "name": "Paginate Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{host}}/api/job-offers",
+                  "host": ["{{host}}"],
+                  "path": ["api", "job-offers"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "954"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3ba-eY2hkkZUV+/bLwc2hW7cSrbXGuA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 31 Jan 2025 15:27:11 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": true,\n    \"data\": {\n        \"items\": [\n            {\n                \"id\": \"2\",\n                \"fetchBatchId\": null,\n                \"jobId\": \"JB-123\",\n                \"jobType\": \"Full-Time\",\n                \"title\": \"TechCorp\",\n                \"company\": \"\",\n                \"state\": \"TX\",\n                \"city\": \"Austin\",\n                \"salaryMin\": 60000,\n                \"salaryMax\": 70000,\n                \"salaryCurrency\": \"usd\",\n                \"postedAt\": \"2024-02-03T00:00:00.000Z\",\n                \"skills\": [\n                    \"skill_1\",\n                    \"skill_2\"\n                ],\n                \"details\": {\n                    \"field_key\": \"field_value\"\n                },\n                \"rawJobData\": null,\n                \"createdAt\": \"2025-01-31T13:34:45.459Z\",\n                \"updatedAt\": \"2025-01-31T13:34:45.459Z\",\n                \"deletedAt\": null\n            },\n            {\n                \"id\": \"1\",\n                \"fetchBatchId\": null,\n                \"jobId\": \"JB-123\",\n                \"jobType\": \"Full-Time\",\n                \"title\": \"TechCorp\",\n                \"company\": \"\",\n                \"state\": \"TX\",\n                \"city\": \"Austin\",\n                \"salaryMin\": 60000,\n                \"salaryMax\": 70000,\n                \"salaryCurrency\": \"usd\",\n                \"postedAt\": \"2024-02-03T00:00:00.000Z\",\n                \"skills\": [\n                    \"skill_1\",\n                    \"skill_2\"\n                ],\n                \"details\": {\n                    \"field_key\": \"field_value\"\n                },\n                \"rawJobData\": null,\n                \"createdAt\": \"2025-01-31T10:32:21.223Z\",\n                \"updatedAt\": \"2025-01-31T10:32:21.223Z\",\n                \"deletedAt\": null\n            }\n        ],\n        \"pagination\": {\n            \"currentPage\": 1,\n            \"lastPage\": 1,\n            \"perPage\": 10,\n            \"total\": 2\n        }\n    },\n    \"message\": \"Fetched successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Find one",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/job-offers/:id",
+              "host": ["{{host}}"],
+              "path": ["api", "job-offers", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Find one Example",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{host}}/api/job-offers/:id",
+                  "host": ["{{host}}"],
+                  "path": ["api", "job-offers", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "465"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1d1-9LCQtBEhptrUfclP0dY8B7iJ+Y4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 31 Jan 2025 15:27:20 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": \"1\",\n        \"fetchBatchId\": null,\n        \"jobId\": \"JB-123\",\n        \"jobType\": \"Full-Time\",\n        \"title\": \"TechCorp\",\n        \"company\": \"\",\n        \"state\": \"TX\",\n        \"city\": \"Austin\",\n        \"salaryMin\": 60000,\n        \"salaryMax\": 70000,\n        \"salaryCurrency\": \"usd\",\n        \"postedAt\": \"2024-02-03T00:00:00.000Z\",\n        \"skills\": [\n            \"skill_1\",\n            \"skill_2\"\n        ],\n        \"details\": {\n            \"field_key\": \"field_value\"\n        },\n        \"rawJobData\": null,\n        \"createdAt\": \"2025-01-31T10:32:21.223Z\",\n        \"updatedAt\": \"2025-01-31T10:32:21.223Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"Fetched successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"jobId\": \"JB-123\",\n    \"jobType\": \"Full-Time\",\n    \"title\": \"TechCorp\",\n    \"company\": \"\",\n    \"state\": \"TX\",\n    \"city\": \"Austin\",\n    \"salaryMin\": 60000,\n    \"salaryMax\": 70000,\n    \"salaryCurrency\": \"usd\",\n    \"postedAt\": \"2024-02-03\",\n    \"skills\": [\n        \"skill_1\",\n        \"skill_2\"\n    ],\n    \"details\": {\n        \"field_key\": \"field_value\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/api/job-offers",
+              "host": ["{{host}}"],
+              "path": ["api", "job-offers"]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Example",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"jobId\": \"JB-123\",\n    \"jobType\": \"Full-Time\",\n    \"title\": \"TechCorp\",\n    \"company\": \"\",\n    \"state\": \"TX\",\n    \"city\": \"Austin\",\n    \"salaryMin\": 60000,\n    \"salaryMax\": 70000,\n    \"salaryCurrency\": \"usd\",\n    \"postedAt\": \"2024-02-03\",\n    \"skills\": [\n        \"skill_1\",\n        \"skill_2\"\n    ],\n    \"details\": {\n        \"field_key\": \"field_value\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/api/job-offers",
+                  "host": ["{{host}}"],
+                  "path": ["api", "job-offers"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "465"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1d1-FVKijM3agBk4mmVFsfqBn+eFNFE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 31 Jan 2025 15:27:30 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": \"3\",\n        \"jobId\": \"JB-123\",\n        \"jobType\": \"Full-Time\",\n        \"title\": \"TechCorp\",\n        \"company\": \"\",\n        \"state\": \"TX\",\n        \"city\": \"Austin\",\n        \"salaryMin\": 60000,\n        \"salaryMax\": 70000,\n        \"salaryCurrency\": \"usd\",\n        \"postedAt\": \"2024-02-03T00:00:00.000Z\",\n        \"skills\": [\n            \"skill_1\",\n            \"skill_2\"\n        ],\n        \"details\": {\n            \"field_key\": \"field_value\"\n        },\n        \"updatedAt\": \"2025-01-31T15:27:30.025Z\",\n        \"createdAt\": \"2025-01-31T15:27:30.025Z\",\n        \"fetchBatchId\": null,\n        \"rawJobData\": null,\n        \"deletedAt\": null\n    },\n    \"message\": \"Created successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"jobId\": \"JB-123\",\n    \"jobType\": \"Full-Time\",\n    \"title\": \"TechCorp\",\n    \"company\": \"\",\n    \"state\": \"TX\",\n    \"city\": \"Austin\",\n    \"salaryMin\": 60000,\n    \"salaryMax\": 70000,\n    \"salaryCurrency\": \"usd\",\n    \"postedAt\": \"2024-02-03\",\n    \"skills\": [\n        \"skill_1\",\n        \"skill_2\",\n        \"skill_3\"\n    ],\n    \"details\": {\n        \"field_key\": \"field_value\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/api/job-offers/:id",
+              "host": ["{{host}}"],
+              "path": ["api", "job-offers", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Example",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"jobId\": \"JB-123\",\n    \"jobType\": \"Full-Time\",\n    \"title\": \"TechCorp\",\n    \"company\": \"\",\n    \"state\": \"TX\",\n    \"city\": \"Austin\",\n    \"salaryMin\": 60000,\n    \"salaryMax\": 70000,\n    \"salaryCurrency\": \"usd\",\n    \"postedAt\": \"2024-02-03\",\n    \"skills\": [\n        \"skill_1\",\n        \"skill_2\",\n        \"skill_3\"\n    ],\n    \"details\": {\n        \"field_key\": \"field_value\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/api/job-offers/:id",
+                  "host": ["{{host}}"],
+                  "path": ["api", "job-offers", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "475"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1db-0YbLv3g/HcfpBk6Qu3OE9kOW7bQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 31 Jan 2025 15:27:39 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": true,\n    \"data\": {\n        \"id\": \"1\",\n        \"fetchBatchId\": null,\n        \"jobId\": \"JB-123\",\n        \"jobType\": \"Full-Time\",\n        \"title\": \"TechCorp\",\n        \"company\": \"\",\n        \"state\": \"TX\",\n        \"city\": \"Austin\",\n        \"salaryMin\": 60000,\n        \"salaryMax\": 70000,\n        \"salaryCurrency\": \"usd\",\n        \"postedAt\": \"2024-02-03T00:00:00.000Z\",\n        \"skills\": [\n            \"skill_1\",\n            \"skill_2\",\n            \"skill_3\"\n        ],\n        \"details\": {\n            \"field_key\": \"field_value\"\n        },\n        \"rawJobData\": null,\n        \"createdAt\": \"2025-01-31T10:32:21.223Z\",\n        \"updatedAt\": \"2025-01-31T15:27:39.177Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"Updated successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/job-offers/:id",
+              "host": ["{{host}}"],
+              "path": ["api", "job-offers", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Example",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{host}}/api/job-offers/:id",
+                  "host": ["{{host}}"],
+                  "path": ["api", "job-offers", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "60"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3c-j3tWBkiGehwbRKsIVwsNK8zuyjo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 31 Jan 2025 15:27:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": true,\n    \"data\": null,\n    \"message\": \"Deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Base",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}",
+          "host": ["{{host}}"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost:3000",
+      "type": "string"
+    }
+  ]
+}

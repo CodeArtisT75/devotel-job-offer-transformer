@@ -13,6 +13,7 @@ import { ModelNotFoundExceptionFilter } from './lib/filters/model-not-found-exce
 import { UnhandledErrorExceptionFilter } from './lib/filters/unhandled-error-exception.filter';
 import { ValidationErrorExceptionFilter } from './lib/filters/validation-error-exception.filter';
 import { LoggerModule } from './lib/logger';
+import { JobOffersModule } from './modules/job-offers/job-offers.module';
 
 @Module({
   imports: [
@@ -26,6 +27,8 @@ import { LoggerModule } from './lib/logger';
     I18nModule.forRoot(I18nConfig),
 
     LoggerModule,
+
+    JobOffersModule,
   ],
 
   controllers: [AppController],
