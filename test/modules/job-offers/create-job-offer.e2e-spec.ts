@@ -32,7 +32,7 @@ describe('Create Job Offer (e2e)', () => {
     expect(response.statusCode).toBe(201);
     expect(response.body).toHaveProperty('status', true);
     expect(response.body).toHaveProperty('data');
-    expect(response.body).toHaveProperty('data.id', jobOffer.id);
+    expect(response.body).toHaveProperty('data.id', +jobOffer.id);
     expect(response.body).toHaveProperty('data.title', jobOffer.title);
   });
 

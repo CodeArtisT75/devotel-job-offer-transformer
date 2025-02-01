@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "539eef11-6ba1-4721-b7f0-2701800ce741",
-    "name": "Devotel Assessment test",
+    "name": "Devotel_Assessment_test",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "3998703"
   },
@@ -17,7 +17,50 @@
             "url": {
               "raw": "{{host}}/api/job-offers",
               "host": ["{{host}}"],
-              "path": ["api", "job-offers"]
+              "path": ["api", "job-offers"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "perPage",
+                  "value": "52",
+                  "disabled": true
+                },
+                {
+                  "key": "jobType",
+                  "value": "Full-Time",
+                  "description": "Full-Time | Part-Time | Contract | Remote",
+                  "disabled": true
+                },
+                {
+                  "key": "title",
+                  "value": "Backend Engineer",
+                  "disabled": true
+                },
+                {
+                  "key": "state",
+                  "value": "NJ",
+                  "disabled": true
+                },
+                {
+                  "key": "city",
+                  "value": "New York",
+                  "disabled": true
+                },
+                {
+                  "key": "salaryMin",
+                  "value": "73000",
+                  "disabled": true
+                },
+                {
+                  "key": "salaryMax",
+                  "value": "20000",
+                  "disabled": true
+                }
+              ]
             }
           },
           "response": [

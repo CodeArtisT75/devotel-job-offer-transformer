@@ -5,12 +5,14 @@ import { GetJobOfferPaginationQueryDto } from '../dto/get-job-offer-pagination-q
 import { UpdateJobOfferDto } from '../dto/update-job-offer.dto';
 import { JobOffer } from '../entities/JobOffer.entity';
 import { JobTypeEnum } from '../enums/job-type.enum';
+import { JobOfferSerializer } from '../serializers/job-offer.serializer';
 import { JobOffersService } from '../services/job-offers.service';
 import { getMockJobOffersService } from './utils/mocks';
 
 describe('JobOffersController', () => {
   let controller: JobOffersController;
-  const mockJobOffer = JobOffer.factory(1)[0] as Partial<JobOffer>;
+  const mockJobOffer = JobOffer.factory(1, { id: 1 })[0] as Partial<JobOffer>;
+  const serializedJobOffer = new JobOfferSerializer(mockJobOffer as JobOffer);
   const mockedJobOfferService = getMockJobOffersService(mockJobOffer);
 
   beforeEach(async () => {
@@ -39,7 +41,7 @@ describe('JobOffersController', () => {
     const result = await controller.create(dto);
 
     expect(mockedJobOfferService.create).toHaveBeenCalledWith(dto);
-    expect(result).toEqual(mockJobOffer);
+    expect(result).toEqual(serializedJobOffer);
   });
 
   it('should return paginated job offers', async () => {
@@ -49,7 +51,7 @@ describe('JobOffersController', () => {
 
     expect(mockedJobOfferService.paginateJobOffers).toHaveBeenCalledWith(dto);
     expect(result).toEqual({
-      items: [mockJobOffer],
+      items: [serializedJobOffer],
       total: 1,
       currentPage: 1,
       perPage: 10,
@@ -62,7 +64,7 @@ describe('JobOffersController', () => {
     const result = await controller.findOne(id);
 
     expect(mockedJobOfferService.findOne).toHaveBeenCalledWith(id);
-    expect(result).toEqual(mockJobOffer);
+    expect(result).toEqual(serializedJobOffer);
   });
 
   it('should update a job offer', async () => {
@@ -72,7 +74,7 @@ describe('JobOffersController', () => {
     const result = await controller.update(id, dto);
 
     expect(mockedJobOfferService.update).toHaveBeenCalledWith(id, dto);
-    expect(result).toEqual(mockJobOffer);
+    expect(result).toEqual(serializedJobOffer);
   });
 
   it('should delete a job offer', async () => {

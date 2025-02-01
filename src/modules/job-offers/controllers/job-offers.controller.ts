@@ -4,45 +4,48 @@ import { IPaginationResponse } from '../../../lib/interfaces/pagination-response
 import { CreateJobOfferDto } from '../dto/create-job-offer.dto';
 import { GetJobOfferPaginationQueryDto } from '../dto/get-job-offer-pagination-query.dto';
 import { UpdateJobOfferDto } from '../dto/update-job-offer.dto';
-import { JobOffer } from '../entities/JobOffer.entity';
+import { JobOfferSerializer } from '../serializers/job-offer.serializer';
 import { JobOffersService } from '../services/job-offers.service';
 
 @Controller('api/job-offers')
 export class JobOffersController {
   constructor(protected readonly jobOffersService: JobOffersService) {}
 
-  @TransformResponse({ model: JobOffer, httpStatus: HttpStatus.CREATED, message: 'crud.create' })
+  @TransformResponse({ model: JobOfferSerializer, httpStatus: HttpStatus.CREATED, message: 'crud.create' })
   @Post()
-  async create(@Body() createJobOfferDto: CreateJobOfferDto): Promise<JobOffer> {
-    return this.jobOffersService.create(createJobOfferDto);
+  async create(@Body() createJobOfferDto: CreateJobOfferDto): Promise<JobOfferSerializer> {
+    return new JobOfferSerializer(await this.jobOffersService.create(createJobOfferDto));
   }
 
-  @TransformResponse({ model: JobOffer, isPagination: true, message: 'crud.read' })
+  @TransformResponse({ model: JobOfferSerializer, isPagination: true, message: 'crud.read' })
   @Get()
   async paginate(
     @Query() getJobOfferPaginationQueryDto: GetJobOfferPaginationQueryDto,
-  ): Promise<IPaginationResponse<JobOffer>> {
+  ): Promise<IPaginationResponse<JobOfferSerializer>> {
     const { jobOffers, total, currentPage, perPage } =
       await this.jobOffersService.paginateJobOffers(getJobOfferPaginationQueryDto);
 
     return {
-      items: jobOffers,
+      items: jobOffers.map(jobOffer => new JobOfferSerializer(jobOffer)),
       total,
       currentPage,
       perPage,
     };
   }
 
-  @TransformResponse({ model: JobOffer, message: 'crud.read' })
+  @TransformResponse({ model: JobOfferSerializer, message: 'crud.read' })
   @Get(':id')
-  async findOne(@Param('id', ParseIntPipe) id: number): Promise<JobOffer> {
-    return this.jobOffersService.findOne(id);
+  async findOne(@Param('id', ParseIntPipe) id: number): Promise<JobOfferSerializer> {
+    return new JobOfferSerializer(await this.jobOffersService.findOne(id));
   }
 
-  @TransformResponse({ model: JobOffer, message: 'crud.update' })
+  @TransformResponse({ model: JobOfferSerializer, message: 'crud.update' })
   @Patch(':id')
-  async update(@Param('id', ParseIntPipe) id: number, @Body() updateJobOfferDto: UpdateJobOfferDto): Promise<JobOffer> {
-    return this.jobOffersService.update(id, updateJobOfferDto);
+  async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateJobOfferDto: UpdateJobOfferDto,
+  ): Promise<JobOfferSerializer> {
+    return new JobOfferSerializer(await this.jobOffersService.update(id, updateJobOfferDto));
   }
 
   @TransformResponse({ message: 'crud.delete' })
