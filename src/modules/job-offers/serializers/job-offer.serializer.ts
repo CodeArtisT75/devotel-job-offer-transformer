@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { JobOffer } from '../entities/JobOffer.entity';
 import { JobSalaryCurrencyEnum } from '../enums/job-salary-currency.enum';
 import { JobTypeEnum } from '../enums/job-type.enum';
@@ -21,33 +22,48 @@ export class JobOfferSerializer {
     this.updatedAt = jobOffer.updatedAt;
   }
 
+  @ApiProperty()
   id: number;
 
+  @ApiProperty()
   jobId!: string;
 
+  @ApiProperty({ enum: JobTypeEnum })
   jobType: JobTypeEnum;
 
+  @ApiProperty()
   title: string;
 
+  @ApiProperty()
   company: string;
 
+  @ApiProperty()
   state: string;
 
+  @ApiProperty()
   city: string;
 
+  @ApiProperty()
   salaryMin: number;
 
+  @ApiProperty()
   salaryMax: number;
 
+  @ApiProperty({ enum: JobSalaryCurrencyEnum })
   salaryCurrency: JobSalaryCurrencyEnum;
 
+  @ApiProperty()
   postedAt: Date;
 
+  @ApiProperty()
   skills: object;
 
+  @ApiProperty()
   details: object;
 
+  @ApiProperty()
   createdAt: Date;
 
+  @ApiProperty()
   updatedAt: Date;
 }

@@ -22,7 +22,7 @@ export class GetJobOfferPaginationQueryDto extends BaseValidationDto {
 
   @IsOptional()
   @IsEnum(JobTypeEnum)
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ enum: JobTypeEnum })
   jobType?: JobTypeEnum;
 
   @IsOptional()
