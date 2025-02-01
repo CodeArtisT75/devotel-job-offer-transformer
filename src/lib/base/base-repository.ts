@@ -7,7 +7,7 @@ export type RepositoryPaginationOptionsType = {
 };
 export type RepositoryFindOptionsType = FindOptions;
 export type RepositoryCreateOptionsType = CreateOptions;
-export type RepositoryUpdateOptionsType = UpdateOptions;
+export type RepositoryUpdateOptionsType = Omit<UpdateOptions, 'where'>;
 export type RepositoryDestroyOptionsType = DestroyOptions;
 
 export abstract class BaseRepository<M extends BaseModel> {

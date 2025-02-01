@@ -19,7 +19,7 @@ export class JobFetchBatch extends BaseModel {
 
   @Factory((_faker, ctx) => (ctx?.jobs as object) ?? {})
   @Column(DataType.JSON)
-  jobs: object;
+  jobs: any;
 
   @Factory((faker, ctx) => (ctx?.startedAt as Date) ?? faker!.date.past())
   @Column

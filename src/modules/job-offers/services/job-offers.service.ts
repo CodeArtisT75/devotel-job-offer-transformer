@@ -56,6 +56,7 @@ export class JobOffersService {
 
   async createIfJobIdNotExists(
     jobOfferDto: CreateJobOfferDto,
+    fetchBatchId: number | undefined,
     transaction?: Transaction,
   ): Promise<{
     created: boolean;
@@ -72,7 +73,13 @@ export class JobOffersService {
 
     return {
       created: true,
-      jobOffer: await this.jobOfferRepository.create(jobOfferDto, { transaction }),
+      jobOffer: await this.jobOfferRepository.create(
+        {
+          ...jobOfferDto,
+          fetchBatchId,
+        },
+        { transaction },
+      ),
     };
   }
 }

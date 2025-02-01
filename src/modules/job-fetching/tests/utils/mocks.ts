@@ -18,3 +18,12 @@ export const getMockLoggerService = () => ({
 export const getMockJobOffersService = () => ({
   createIfJobIdNotExists: jest.fn(),
 });
+
+export const getMockJobFetchBatchRepository = () => ({
+  create: jest.fn(),
+  update: jest.fn(),
+});
+
+export const getMockFailedImportedJobRepository = () => ({
+  create: jest.fn(),
+});
