@@ -17,10 +17,13 @@ import { LoggerModule } from './lib/logger';
 import { JobFetchingModule } from './modules/job-fetching/job-fetching.module';
 import { JobOffersModule } from './modules/job-offers/job-offers.module';
 
+const envFilePath = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath,
       load: [Configurations],
     }),
 
