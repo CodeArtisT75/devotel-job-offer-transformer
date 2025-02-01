@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { TransformResponse } from '../../../lib/decorators/transform-response.decorator';
 import { IPaginationResponse } from '../../../lib/interfaces/pagination-response.interface';
 import { CreateJobOfferDto } from '../dto/create-job-offer.dto';
@@ -7,6 +8,7 @@ import { UpdateJobOfferDto } from '../dto/update-job-offer.dto';
 import { JobOfferSerializer } from '../serializers/job-offer.serializer';
 import { JobOffersService } from '../services/job-offers.service';
 
+@ApiTags('JobOffers')
 @Controller('api/job-offers')
 export class JobOffersController {
   constructor(protected readonly jobOffersService: JobOffersService) {}

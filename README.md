@@ -1,99 +1,195 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# DeVotel Assessment
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Introduction
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project is an assessment task provided by DeVotel. It is a job offer collector that fetches data from different
+providers, transforms them into a unified structure, and stores them in a database. The system is designed to support
+multiple providers.
 
-## Description
+## Installation
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project can be run locally or via Docker.
 
-## Project setup
+### Running the project using Docker
 
-```bash
-$ npm install
-```
+1. **Set environment variables:**
 
-## Compile and run the project
+   - Create a `.env` file based on `.env.example`.
+   - Fill in all required variables.
+
+2. **Run the project:** (Ensure Docker is up and running on your machine)
+
+   ```bash
+   docker compose --profile all up -d --build
+   ```
+
+### Running the project locally using Node.js
+
+Make sure you have a working Node.js installation.
 
 ```bash
-# development
-$ npm run start
+# Install dependencies
+npm install
 
-# watch mode
-$ npm run start:dev
+# Start in production mode
+npm run build
+npm run start:prod
 
-# production mode
-$ npm run start:prod
+# Start in development mode
+npm run start:dev
 ```
 
-## Run tests
+The application will be accessible on port **3000**.
+
+## Running migrations
+
+This project uses **Sequelize-cli** for database management. you need to run migrations to create the database schema.
+
+You need to run the following command:
 
 ```bash
-# unit tests
-$ npm run test
+npm run db:migrate
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# using docker
+docker compose run --rm npm run db:migrate
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+You can also undo migrations using the following command:
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+npm run db:migrate:undo
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Checkout `package.json` file for more database migration commands.
 
-## Resources
+## Database Documentation
 
-Check out a few resources that may come in handy when working with NestJS:
+This project uses a **PostgreSQL** database. You need a running PostgreSQL instance to use the project.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+The **ERD diagram** is available at `./docs/db/devotel-job-offer-task-db-design.png`:
 
-## Support
+![Database ERD](./docs/db/devotel-job-offer-task-db-design.png)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Database Tables
 
-## Stay in touch
+- **`job_offers`**: Stores all job offers in the system.
+- **`job_fetch_batches`**: Stores job fetch batch every time requesting jobs from job-providers.
+- **`failed_imported_jobs`**: Stores jobs that failed to import (for example due to a database validation error).
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## API Documentation
 
-## License
+API documentation is available via Swagger or a Postman collection:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- **Swagger:** Available at `/docs`
+- **Postman Collection:** [postman_collection.json](./docs/postman/Devotel_Assessment_test.postman_collection.json)
+
+## Job Fetching Process
+
+A **cron job** runs periodically to fetch jobs from all providers and store them in the database. You can configure the
+interval in the `.env` file by setting the `JOB_FETCHING_CRON_EXPRESSION` variable.
+
+The cron job is implemented in:
+
+```
+src/modules/job-fetching/schedulers/job-fetching.scheduler.ts
+```
+
+## Job Providers
+
+The project supports fetching jobs from different providers with different schema. A provider data must be transformed
+into a unified structure before storing in the system. For each provider we have to implement a separate ProviderClass.
+
+### How to Add a New Provider
+
+1. **Create a provider class** that implements the `JobProviderInterface` located at:
+   ```
+   src/modules/job-fetching/interfaces/job-provider.interface.ts
+   ```
+2. **Register the provider** in `job-fetching.module.ts`.
+3. **Add the provider** to the `providers` array in `job-fetching.service.ts`.
+4. **Store provider metadata** (name and URL) in `job-providers.config.ts` for better code management.
+
+## Project Structure
+
+```
+└───app
+    ├───.husky
+    ├───database
+    ├───docs
+    │   └───postman
+    │   └───db
+    ├───logs
+    │   └───app.log
+    ├───public
+    ├───src
+    │   ├───config
+    │   ├───i18n
+    │   ├───lib
+    │   └───modules
+    │       └───MODULE_NAME
+    ├───test
+```
+
+### Directory Overview
+
+- **`.husky/`**: Contains [Husky](https://github.com/typicode/husky) hooks.
+- **`database/`**: Contains Sequelize migrations and seeders.
+- **`docs/`**: Stores documentation files, including Postman collections and database schema.
+- **`logs/`**: Stores log files generated by Winston.
+- **`src/`**: Contains the source code.
+  - **`config/`**: Configuration files and parsed environment variables.
+  - **`i18n/`**: JSON files for internationalization.
+  - **`lib/`**: Shared utilities like base classes, decorators, exception filters, pipes, and logger modules.
+  - **`modules/`**: Project modules, each defined with `MODULE_NAME.module.ts` and containing controllers, services,
+    entities, DTOs, and other logic.
+- **`test/`**: Contains end-to-end (E2E) tests.
+
+## Packages Used
+
+This project is built with **Node.js (22.10)** and **TypeScript (5.7.3)**. Most important dependencies are:
+
+| Use Case      | Package / Technology                                      |
+| ------------- | --------------------------------------------------------- |
+| Web Framework | [`NestJS (11)`](https://docs.nestjs.com/)                 |
+| Database      | [`PostgreSQL (16)`](https://www.postgresql.org/)          |
+| ORM           | [`Sequelize (6)`](https://github.com/sequelize/sequelize) |
+| Logging       | [`Winston (3)`](https://github.com/winstonjs/winston)     |
+
+## Linting & Formatting
+
+This project uses **ESLint** and **Prettier**.
+
+To lint and format the code, run:
+
+```bash
+npm run lint
+npm run format
+```
+
+Additionally, **Husky** ensures `eslint --fix` runs on every commit.
+
+## Testing
+
+To run tests, first create a `.env.testing` file by copying `.env.testing.example` and setting the required values.
+
+Tests run in a separate environment using `cross-env`, allowing them to use a dedicated test database.
+
+> You don't like to use `.env.testing`? Don't worry! The tests will run using `.env` file. But NOT RECOMMENDED! Believe
+> me :))
+
+Run tests using:
+
+```bash
+# Unit tests
+npm run test
+
+# E2E tests
+npm run test:e2e
+```
+
+## To improve
+
+Some potential improvements for this project:
+
+- [ ] Add more unit tests.
+- [ ] Add more E2E tests (especially for data filtering and failed tests).

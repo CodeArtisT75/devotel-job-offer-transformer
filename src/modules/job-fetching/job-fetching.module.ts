@@ -18,6 +18,8 @@ import { JobFetchingService } from './services/job-fetching.service';
     JobFetchingService,
     JobFetchBatchRepository,
     FailedImportedJobRepository,
+
+    // FetchingCronJob
     JobFetchingScheduler,
 
     // Providers

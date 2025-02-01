@@ -7,6 +7,7 @@ export function registerSwagger(app: INestApplication) {
     .setDescription('API documentation for Devotel Job Offer Transformer')
     .setVersion('1.0')
     .addTag('Home')
+    .addTag('JobOffers')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, documentFactory);
