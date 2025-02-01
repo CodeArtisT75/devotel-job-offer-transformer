@@ -1,4 +1,4 @@
-import { CreateOptions, DestroyOptions, FindOptions, ModelStatic, UpdateOptions } from 'sequelize';
+import { CreateOptions, DestroyOptions, FindOptions, ModelStatic, UpdateOptions, WhereOptions } from 'sequelize';
 import { BaseModel } from './base-model';
 
 export type RepositoryPaginationOptionsType = {
@@ -15,7 +15,7 @@ export abstract class BaseRepository<M extends BaseModel> {
 
   public paginate(
     paginationOptions: RepositoryPaginationOptionsType,
-    filters?: Partial<M>,
+    filters?: WhereOptions<M>,
     options?: RepositoryFindOptionsType,
   ): Promise<{ rows: M[]; currentPage: number; perPage: number; total: number }> {
     return this.entityModel.paginate({
@@ -28,21 +28,21 @@ export abstract class BaseRepository<M extends BaseModel> {
     }) as Promise<{ rows: M[]; currentPage: number; perPage: number; total: number }>;
   }
 
-  public findAll(filters?: Partial<M>, options?: RepositoryFindOptionsType): Promise<M[]> {
+  public findAll(filters?: WhereOptions<M>, options?: RepositoryFindOptionsType): Promise<M[]> {
     return this.entityModel.findAll({
       where: filters,
       transaction: options?.transaction,
     }) as Promise<M[]>;
   }
 
-  public findOne(filters?: Partial<M>, options?: RepositoryFindOptionsType): Promise<M | null> {
+  public findOne(filters?: WhereOptions<M>, options?: RepositoryFindOptionsType): Promise<M | null> {
     return this.entityModel.findOne({
       where: filters,
       transaction: options?.transaction,
     }) as Promise<M | null>;
   }
 
-  public findOneOrFail(filters?: Partial<M>, options?: RepositoryFindOptionsType): Promise<M> {
+  public findOneOrFail(filters?: WhereOptions<M>, options?: RepositoryFindOptionsType): Promise<M> {
     return this.entityModel.findOneOrFail({
       where: filters,
       transaction: options?.transaction,

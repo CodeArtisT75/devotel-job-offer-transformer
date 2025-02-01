@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Transaction } from 'sequelize';
+import { Op, Transaction, WhereOptions } from 'sequelize';
 import { CreateJobOfferDto } from '../dto/create-job-offer.dto';
 import { GetJobOfferPaginationQueryDto } from '../dto/get-job-offer-pagination-query.dto';
 import { UpdateJobOfferDto } from '../dto/update-job-offer.dto';
@@ -15,7 +15,35 @@ export class JobOffersService {
   }
 
   async paginateJobOffers(getJobOfferPaginationQueryDto?: GetJobOfferPaginationQueryDto) {
-    const filters: Partial<JobOffer> = {};
+    const filters: WhereOptions<JobOffer> = {};
+
+    if (getJobOfferPaginationQueryDto?.jobType) {
+      filters.jobType = getJobOfferPaginationQueryDto.jobType;
+    }
+
+    if (getJobOfferPaginationQueryDto?.title) {
+      filters.title = getJobOfferPaginationQueryDto.title;
+    }
+
+    if (getJobOfferPaginationQueryDto?.state) {
+      filters.state = getJobOfferPaginationQueryDto.state;
+    }
+
+    if (getJobOfferPaginationQueryDto?.city) {
+      filters.city = getJobOfferPaginationQueryDto.city;
+    }
+
+    if (getJobOfferPaginationQueryDto?.salaryMin) {
+      filters.salaryMin = {
+        [Op.gte]: getJobOfferPaginationQueryDto.salaryMin,
+      };
+    }
+
+    if (getJobOfferPaginationQueryDto?.salaryMax) {
+      filters.salaryMax = {
+        [Op.lte]: getJobOfferPaginationQueryDto.salaryMax,
+      };
+    }
 
     const { rows, total, currentPage, perPage } = await this.jobOfferRepository.paginate(
       {
