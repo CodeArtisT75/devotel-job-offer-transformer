@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
 import { TransformResponse } from '../../../lib/decorators/transform-response.decorator';
 import { IPaginationResponse } from '../../../lib/interfaces/pagination-response.interface';
 import { CreateJobOfferDto } from '../dto/create-job-offer.dto';
@@ -11,7 +11,7 @@ import { JobOffersService } from '../services/job-offers.service';
 export class JobOffersController {
   constructor(protected readonly jobOffersService: JobOffersService) {}
 
-  @TransformResponse({ model: JobOffer, message: 'crud.create' })
+  @TransformResponse({ model: JobOffer, httpStatus: HttpStatus.CREATED, message: 'crud.create' })
   @Post()
   async create(@Body() createJobOfferDto: CreateJobOfferDto): Promise<JobOffer> {
     return this.jobOffersService.create(createJobOfferDto);

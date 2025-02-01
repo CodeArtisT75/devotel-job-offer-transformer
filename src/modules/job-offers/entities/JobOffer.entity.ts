@@ -19,7 +19,7 @@ import { JobTypeEnum } from '../enums/job-type.enum';
 
 @Table({ tableName: 'job_offers', underscored: true })
 export class JobOffer extends BaseModel {
-  @Factory((faker, ctx) => (ctx?.id as number) ?? faker!.number.int({ min: 1, max: 1000 }))
+  @Factory((_faker, ctx) => ctx?.id as number)
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.BIGINT)
@@ -59,7 +59,7 @@ export class JobOffer extends BaseModel {
   @Column(DataType.DOUBLE)
   salaryMin: number;
 
-  @Factory((faker, ctx) => (ctx?.salaryMax as number) ?? faker!.number.int({ min: 5000 }))
+  @Factory((faker, ctx) => (ctx?.salaryMax as number) ?? faker!.number.int({ min: 5000, max: 10000 }))
   @Column(DataType.DOUBLE)
   salaryMax: number;
 

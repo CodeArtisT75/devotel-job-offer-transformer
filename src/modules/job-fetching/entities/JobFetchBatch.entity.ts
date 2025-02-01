@@ -6,7 +6,7 @@ import { FailedImportedJob } from './FailedImportedJob.entity';
 
 @Table({ tableName: 'job_fetch_batches', underscored: true })
 export class JobFetchBatch extends BaseModel {
-  @Factory((faker, ctx) => (ctx?.id as number) ?? faker!.number.int({ min: 1, max: 1000 }))
+  @Factory((faker, ctx) => ctx?.id as number)
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.BIGINT)

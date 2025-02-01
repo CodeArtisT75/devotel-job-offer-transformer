@@ -5,5 +5,11 @@
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "setupFilesAfterEnv": ["<rootDir>/setup-tests.ts"],
+  "verbose": true,
+  "maxWorkers": 1,
+  "moduleNameMapper": {
+    "src/(.*)": "<rootDir>../src/$1"
   }
 }
