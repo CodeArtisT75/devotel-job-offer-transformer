@@ -4,7 +4,7 @@ import { IPaginationResponse } from '../../../lib/interfaces/pagination-response
 import { CreateJobOfferDto } from '../dto/create-job-offer.dto';
 import { GetJobOfferPaginationQueryDto } from '../dto/get-job-offer-pagination-query.dto';
 import { UpdateJobOfferDto } from '../dto/update-job-offer.dto';
-import { JobOffer } from '../entities/job.offer.entity';
+import { JobOffer } from '../entities/JobOffer.entity';
 import { JobOffersService } from '../services/job-offers.service';
 
 @Controller('api/job-offers')

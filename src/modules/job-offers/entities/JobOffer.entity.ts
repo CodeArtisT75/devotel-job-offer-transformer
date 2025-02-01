@@ -2,15 +2,18 @@ import { Factory } from 'nestjs-seeder';
 import {
   AllowNull,
   AutoIncrement,
+  BelongsTo,
   Column,
   CreatedAt,
   DataType,
   DeletedAt,
+  ForeignKey,
   PrimaryKey,
   Table,
   UpdatedAt,
 } from 'sequelize-typescript';
 import { BaseModel } from '../../../lib/base/base-model';
+import { JobFetchBatch } from '../../job-fetching/entities/JobFetchBatch.entity';
 import { JobSalaryCurrencyEnum } from '../enums/job-salary-currency.enum';
 import { JobTypeEnum } from '../enums/job-type.enum';
 
@@ -23,7 +26,7 @@ export class JobOffer extends BaseModel {
   id!: number;
 
   @Factory((_faker, ctx) => (ctx?.fetchBatchId as string) ?? null)
-  // @ForeignKey(() => JobFetchBatch)
+  @ForeignKey(() => JobFetchBatch)
   @Column(DataType.BIGINT)
   fetchBatchId: number;
 
@@ -89,6 +92,6 @@ export class JobOffer extends BaseModel {
   @DeletedAt
   deletedAt: Date;
 
-  // @BelongsTo(() => JobFetchBatch)
-  // jobFetchBatch: JobFetchBatch;
+  @BelongsTo(() => JobFetchBatch)
+  jobFetchBatch: JobFetchBatch;
 }

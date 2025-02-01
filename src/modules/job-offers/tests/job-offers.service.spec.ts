@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CreateJobOfferDto } from '../dto/create-job-offer.dto';
 import { GetJobOfferPaginationQueryDto } from '../dto/get-job-offer-pagination-query.dto';
 import { UpdateJobOfferDto } from '../dto/update-job-offer.dto';
-import { JobOffer } from '../entities/job.offer.entity';
+import { JobOffer } from '../entities/JobOffer.entity';
 import { JobTypeEnum } from '../enums/job-type.enum';
 import { JobOfferRepository } from '../repositories/job-offer.repository';
 import { JobOffersService } from '../services/job-offers.service';
