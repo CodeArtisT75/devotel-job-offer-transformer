@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+.editorconfig
+.mailmap
+
+# ignore all markdown files (md) beside all README*.md other than README-secret.md
+README.md
+LICENSE
+
+# CI
+.codeclimate.yml
+.travis.yml
+.taskcluster.yml
+.drone.yml
+.gitlab-ci.yml
+
+# Docker
+Dockerfile
+Dockerfile.env
+Dockerfile.dev
+docker-compose.yml
+docker-compose.dev.yml
+docker-compose.prod.yml
+.docker
+
+# Build dependencies
+dist/
+node_modules/
+coverage
+
+# Logs:
+*.log
+
+# Editors
+.idea/
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Files not required for production
+.eslintrc.js
+.prettierrc
+.commitlintrc.json
+docs/
+.github/
+.husky/

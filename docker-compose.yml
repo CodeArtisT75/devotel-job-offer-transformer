@@ -1,0 +1,61 @@
+name: devotel-assessment
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: devotel-assessment-app
+    restart: always
+    profiles:
+      - all
+    ports:
+      - '3000:3000'
+    volumes:
+      - devotel-logs:/app/logs
+    working_dir: /app
+    env_file:
+      - .env
+    networks:
+      - devotel-network
+
+  postgres:
+    image: postgres:16.6-alpine
+    container_name: devotel-assessment-db
+    restart: unless-stopped
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    volumes:
+      - devotel-db-storage:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      PGDATA: /var/lib/postgresql/data
+    networks:
+      - devotel-network
+    env_file:
+      - .env
+
+  npm:
+    image: node:22.13-alpine
+    container_name: devotel-assessment-npm
+    profiles:
+      - all
+    volumes:
+      - ./:/app
+    working_dir: /app
+    networks:
+      - devotel-network
+    entrypoint: ['npm']
+    env_file:
+      - .env
+
+networks:
+  devotel-network:
+
+volumes:
+  devotel-db-storage:
+
+  devotel-logs:
