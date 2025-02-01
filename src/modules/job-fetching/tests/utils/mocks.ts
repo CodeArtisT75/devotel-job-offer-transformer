@@ -10,6 +10,10 @@ export const getMockApi2ProviderService = () => ({
   getProviderName: jest.fn(),
 });
 
+export const getMockJobFetchingService = () => ({
+  fetchAndStoreJobs: jest.fn(),
+});
+
 export const getMockLoggerService = () => ({
   info: jest.fn(),
   error: jest.fn(),
@@ -26,4 +30,8 @@ export const getMockJobFetchBatchRepository = () => ({
 
 export const getMockFailedImportedJobRepository = () => ({
   create: jest.fn(),
+});
+
+export const getMockSchedulerRegistry = () => ({
+  addCronJob: jest.fn(),
 });

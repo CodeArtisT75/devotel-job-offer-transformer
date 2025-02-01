@@ -8,6 +8,7 @@ import { Api1ProviderService } from './providers/api1-provider.service';
 import { Api2ProviderService } from './providers/api2-provider.service';
 import { FailedImportedJobRepository } from './repositories/failed-imported-job.repository';
 import { JobFetchBatchRepository } from './repositories/job-fetch-batch.repository';
+import { JobFetchingScheduler } from './schedulers/job-fetching.scheduler';
 import { JobFetchingService } from './services/job-fetching.service';
 
 @Module({
@@ -17,6 +18,9 @@ import { JobFetchingService } from './services/job-fetching.service';
     JobFetchingService,
     JobFetchBatchRepository,
     FailedImportedJobRepository,
+    JobFetchingScheduler,
+
+    // Providers
     Api1ProviderService,
     Api2ProviderService,
   ],

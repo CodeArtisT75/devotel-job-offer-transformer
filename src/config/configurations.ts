@@ -7,4 +7,8 @@ export const Configurations = () => ({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
   },
+
+  app: {
+    job_fetching_cron_expression: process.env.JOB_FETCHING_CRON_EXPRESSION ?? '*/1 * * * *', // default is every minute
+  },
 });

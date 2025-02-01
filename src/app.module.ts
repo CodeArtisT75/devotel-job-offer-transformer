@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
+import { ScheduleModule } from '@nestjs/schedule';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { I18nModule } from 'nestjs-i18n';
 import { AppController } from './app.controller';
@@ -24,6 +25,8 @@ import { JobOffersModule } from './modules/job-offers/job-offers.module';
     }),
 
     SequelizeModule.forRootAsync(SequelizeConfig),
+
+    ScheduleModule.forRoot(),
 
     I18nModule.forRoot(I18nConfig),
 
