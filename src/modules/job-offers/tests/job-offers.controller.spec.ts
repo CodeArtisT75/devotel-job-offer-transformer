@@ -14,6 +14,8 @@ describe('JobOffersController', () => {
   const mockedJobOfferService = getMockJobOffersService(mockJobOffer);
 
   beforeEach(async () => {
+    jest.clearAllMocks();
+
     const module: TestingModule = await Test.createTestingModule({
       controllers: [JobOffersController],
       providers: [

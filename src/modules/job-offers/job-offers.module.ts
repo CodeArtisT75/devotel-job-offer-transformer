@@ -11,5 +11,7 @@ import { JobOffersService } from './services/job-offers.service';
   controllers: [JobOffersController],
 
   providers: [JobOffersService, JobOfferRepository],
+
+  exports: [JobOffersService],
 })
 export class JobOffersModule {}

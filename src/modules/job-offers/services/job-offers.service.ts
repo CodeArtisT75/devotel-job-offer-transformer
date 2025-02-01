@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Transaction } from 'sequelize';
 import { CreateJobOfferDto } from '../dto/create-job-offer.dto';
 import { GetJobOfferPaginationQueryDto } from '../dto/get-job-offer-pagination-query.dto';
 import { UpdateJobOfferDto } from '../dto/update-job-offer.dto';
@@ -51,5 +52,27 @@ export class JobOffersService {
     await this.jobOfferRepository.delete(jobOffer.id);
 
     return jobOffer;
+  }
+
+  async createIfJobIdNotExists(
+    jobOfferDto: CreateJobOfferDto,
+    transaction?: Transaction,
+  ): Promise<{
+    created: boolean;
+    jobOffer: JobOffer | null;
+  }> {
+    const existingJobOffer = await this.jobOfferRepository.findOne({ jobId: jobOfferDto.jobId });
+
+    if (existingJobOffer) {
+      return {
+        created: false,
+        jobOffer: null,
+      };
+    }
+
+    return {
+      created: true,
+      jobOffer: await this.jobOfferRepository.create(jobOfferDto, { transaction }),
+    };
   }
 }

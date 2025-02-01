@@ -13,6 +13,7 @@ import { ModelNotFoundExceptionFilter } from './lib/filters/model-not-found-exce
 import { UnhandledErrorExceptionFilter } from './lib/filters/unhandled-error-exception.filter';
 import { ValidationErrorExceptionFilter } from './lib/filters/validation-error-exception.filter';
 import { LoggerModule } from './lib/logger';
+import { JobFetchingModule } from './modules/job-fetching/job-fetching.module';
 import { JobOffersModule } from './modules/job-offers/job-offers.module';
 
 @Module({
@@ -29,6 +30,8 @@ import { JobOffersModule } from './modules/job-offers/job-offers.module';
     LoggerModule,
 
     JobOffersModule,
+
+    JobFetchingModule,
   ],
 
   controllers: [AppController],
